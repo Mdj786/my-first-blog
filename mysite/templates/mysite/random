@@ -1,0 +1,3 @@
+ <button type="button" class="btn btn-default btn-sm float-right" align='right' onclick="location.href='{% url 'new_post' %}'">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Post
+        </button>

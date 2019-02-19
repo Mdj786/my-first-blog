@@ -14,3 +14,6 @@ def test(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'mysite/post_detail.html', {'post': post})
+
+def new_post(request):
+	    return render(request, 'mysite/new_blog_post.html', {})

@@ -5,6 +5,10 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
 	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Django blog</title>
     </head>
     <body>
@@ -12,16 +16,23 @@
     <h1><a href="">Django Blog</a></h1>
 </div>
 
-<div class="content container">
+<div class="button1">
+	 <button type="button" class="btn btn-default btn-sm float-right" align='right' onclick="location.href='{% url 'new_post' %}'">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Post
+        </button>
+</div>
+
+
+<div class="content_container">
     <div class="row">
         <div class="col-md-8">
             {% for post in posts %}
-                <div class="post">
+                <div class="posts">
                     <div class="date">
-                        <p>published: {{ post.published_date }}</p>
+                        <p>Published: {{ post.published_date }}</p>
                     </div>
-                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
+		    <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+                    <p>{{ post.text|linebreaksbr }}</p>                    
                 </div>
             {% endfor %}
         </div>
