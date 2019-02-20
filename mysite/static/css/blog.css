@@ -52,7 +52,8 @@ h1, h2, h3, h4 {
 }
 
 .button1{
-   float: right;
+   float: left;
+   margin-right: 30px;
 }
 .col-md-8 {
 

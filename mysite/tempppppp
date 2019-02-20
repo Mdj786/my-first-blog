@@ -1,0 +1,56 @@
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <div class="form-group">
+      <label for="title">Enter Title</label>
+      <input type="text_area" class="form-control" id="title" placeholder="Enter title of Post" name="title">
+    </div>
+    <div class="form-group">
+      <label for="text">Enter Post Contents</label>
+      <input type="text_area" class="form-control" id="text" placeholder="Enter post text" name="text">
+    </div>
+      <input type="submit" value="Submit" />
+  </form>
+</div>
+
+
+
+
+def post(self, request):
+	form = HomeForm(request,POST)
+
+	if form.is_valid():
+		post = form.save(commit=False)
+
+		title = request.POST.get('title', '')
+		text = request.POST.get('text', '')
+
+		post_obj = Post(title=title, text=text)
+		post_obj.save()
+
+		#post.title = request.title
+		#post.text = request.text
+		#post.save()
+		text = form.cleaned_data['post']
+		form = HomeForm()
+		return redirect('mysite:mysite')
+
+	args = {'form': form, 'text': text}
+	return render(request, self.post_list,args)
+	
+	
+	
+	
+	
+	
+<label for="title">Title:</label><input class="form-control" class="form-control" placeholder="Enter title of Post" type="text_area" name="title" id="title" />
+    <label for="text">Text:</label><input type="text_area" class="form-control" placeholder="Enter post text" name="text"  id="text" />
+    <p><input type="submit" value="Submit"></p>
+    
+    
+<form action="{% url 'post' %}" method="POST" accept-charset="utf-8">
+    {% csrf_token %}
+    {{ form }}
+    
+</form>

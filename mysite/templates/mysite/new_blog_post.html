@@ -1,5 +1,6 @@
 {% load static %}
 <html lang="en">
+</header>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,21 +10,24 @@
 </head>
 <body>
 
+
+
 <div class="container">
-  <form action="/success/" method="post">
+  <form action="{% url 'post' %}" method="post">
     {% csrf_token %}
     {{ form }}
     <div class="form-group">
-      <label for="title_name">Enter Title</label>
+      <label for="title">Enter Title</label>
       <input type="text_area" class="form-control" id="title" placeholder="Enter title of Post" name="title">
     </div>
     <div class="form-group">
-      <label for="post_text">Enter Post Contents</label>
+      <label for="text">Enter Post Contents</label>
       <input type="text_area" class="form-control" id="text" placeholder="Enter post text" name="text">
     </div>
       <input type="submit" value="Submit" />
   </form>
 </div>
+
 
 </body>
 </html>
