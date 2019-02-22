@@ -32,13 +32,17 @@ ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mysite'
+#    'django-session-idle-timeout',
+    'mysite',
+    #'mysite.apps.UsersConfig', # new
+
 ]
 
 MIDDLEWARE = [
@@ -49,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+#    'django-session-idle-timeout.middleware.SessionIdleTimeout',
+
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -101,6 +108,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#MIDDLEWARE_CLASSES = [
+#   'app_name.middleware.AutoLogout', 
+#]
+
+#AUTO_LOGOUT_DELAY = 1 #equivalent to 5 minutes
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -121,3 +135,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = 'post_list'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
+
+#SESSION_IDLE_TIMEOUT = 1800
+
+
+#SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+
+#AUTH_USER_MODEL = 'mysite.CustomUser' # new
+

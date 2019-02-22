@@ -12,6 +12,18 @@
       <title>Django blog</title>
    </head>
    <body>
+   <!--
+   <div class='signupbtn'>
+   	<a href='{% url 'signup' %}'>Signup</a>
+   </div>
+     <div class='loginbtn'>
+   	<a href='{% url 'login' %}'>Login</a>
+   </div>
+   -->
+   <div class='logout'>
+   	<a href='{% url 'logout' %}'>Logout</a>
+   </div>
+   <div id="body">
       <div class="page-header">
          <h1><a href="">Django Blog</a></h1>
       </div>
@@ -32,9 +44,11 @@
                   <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
                   <p>{{ post.text|linebreaksbr }}</p>
                </div>
+               
                {% endfor %}
             </div>
          </div>
+      </div>
       </div>
       </div>
    </body>
